@@ -25,7 +25,8 @@ public class FutSal {
         int opcio;
         String[] menu = {
             "Sortir",
-            "Dades del club"
+            "Dades del club",
+            "Temporada"
         };
         
         // Dades de prova // BORRAR
@@ -42,7 +43,9 @@ public class FutSal {
             switch(opcio) {
                 case 1:     // Dades del club
                     dadesClub();
-                    break;                
+                    break;  
+                case 2:     // Temporada
+                    break;
                 case SORTIR:                    
                     break;
                 default:
