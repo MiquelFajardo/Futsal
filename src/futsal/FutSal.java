@@ -1,6 +1,8 @@
 package futsal;
 
+import Temporada.Temporada;
 import UtilsES.UtilsES;
+import java.util.List;
 
 /**
  * Aplicació per portar el control d'un equip de futbol sala
@@ -10,9 +12,10 @@ public class FutSal {
     final static int SORTIR = 0;
     
     final static String TRIA_OPCIO = "Selecciona una opció: ";
-    final static String OPCIO_NO_VALIDA = "\nERROR. Opció de menú no vàlida. Contacti amb el desatrotllador.\n";
+    final static String OPCIO_NO_VALIDA = "\nERROR. Opció de menú no vàlida. Contacti amb el desatrotllador.\n";    
     
     private static Club club;
+    private static Temporada temporadaSeleccionada = null;
     
     UtilsES utilsES;
     
@@ -25,11 +28,12 @@ public class FutSal {
         int opcio;
         String[] menu = {
             "Sortir",
-            "Dades del club"
+            "Dades del club",
+            "Temporada"
         };
         
         // Dades de prova // BORRAR
-        club = new Club("CFS Porqueres", "Montseny s/n", "Porqueres", "Girona", "17834", "972581807", "info@cfsporqueres.cat", "www.cfsporqueres.cat"); 
+        crearDadesProva();
         
         if(club == null) {
             System.out.println("Club no inicialitzat. Entra les dades\n");     
@@ -42,7 +46,10 @@ public class FutSal {
             switch(opcio) {
                 case 1:     // Dades del club
                     dadesClub();
-                    break;                
+                    break;  
+                case 2:     // Temporada
+                    temporada();
+                    break;
                 case SORTIR:                    
                     break;
                 default:
@@ -132,4 +139,53 @@ public class FutSal {
         if(!web.isEmpty()) club.setWeb(web);
     }
     
+    // TEMPORADA
+    public void temporada() {
+        utilsES = new UtilsES();        
+        int opcio;
+        String[] menu = {
+            "Tornar al menú anterior",
+            "Seleccionar temporada",
+            "Veure equips"
+        };
+        
+        do {
+            utilsES.mostrarMenu("Temporada", menu);
+            opcio = utilsES.demanrEnter(TRIA_OPCIO, SORTIR, menu.length - 1);
+            switch(opcio){
+                case 1:         
+                    seleccionarTemporada();
+                    break;
+                case 0:
+                   
+                    break;
+                default:
+                    System.out.println(OPCIO_NO_VALIDA);
+            }
+        } while(opcio != SORTIR);
+    }
+    /**
+     * Selecciona una temporada
+     */
+    public void seleccionarTemporada() {
+        utilsES = new UtilsES();
+        if(club.getTemporades().isEmpty()) {
+            System.out.println("\nERROR. No hi ha cap temporada introduïda al sistema.\n");
+        }  else {
+            String[] llistatTemporades = new String[club.getTemporades().size()];
+           
+           
+           
+        }      
+    }
+    
+    // Dades de prova // BORRAR
+    public void crearDadesProva() { 
+        // Club
+        club = new Club("CFS Porqueres", "Montseny s/n", "Porqueres", "Girona", "17834", "972581807", "info@cfsporqueres.cat", "www.cfsporqueres.cat"); 
+        // Temporada
+        club.afegirTemporada(new Temporada("2020-21"));
+        club.afegirTemporada(new Temporada("2021-22"));
+        club.afegirTemporada(new Temporada("2022-23"));       
+    }
 }

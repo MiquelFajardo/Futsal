@@ -1,36 +1,37 @@
-package futsal;
-
-import Temporada.Temporada;
-import java.util.List;
-import java.util.ArrayList;
+package Equip;
 
 /**
- *
+ * Classe abstracta 
  * @author Miquel Fajardo <miquel.fajardo@protonmail.com>
  */
-public class Club {
+abstract class PersonaImpl implements Persona {
     private String nom;
+    private String congom1;
+    private String congom2;
     private String domicili;
     private String poblacio;
     private String provincia;
     private String codiPostal;
     private String telefon;
     private String correuElectronic;
-    private String web;
-    
-    private List<Temporada> temporades = new ArrayList<>();
-    
-    // Constructor
-    public Club(String nom, String domicili, String poblacio, String provincia, String codiPostal, String telefon, String correuElectronic, String web) {
+    private String dni;
+    private boolean actiu;
+
+    // Mètode constructor
+    public PersonaImpl(String nom, String congom1, String congom2, String domicili, String poblacio, String provincia, String codiPostal, String telefon, String correuElectronic, String dni, boolean actiu) {
         this.nom = nom;
+        this.congom1 = congom1;
+        this.congom2 = congom2;
         this.domicili = domicili;
         this.poblacio = poblacio;
         this.provincia = provincia;
         this.codiPostal = codiPostal;
         this.telefon = telefon;
         this.correuElectronic = correuElectronic;
-        this.web = web;
+        this.dni = dni;
+        this.actiu = actiu;
     }
+
     
     // Mètodes accessors
     public String getNom() {
@@ -38,6 +39,20 @@ public class Club {
     }
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getCongom1() {
+        return congom1;
+    }
+    public void setCongom1(String congom1) {
+        this.congom1 = congom1;
+    }
+
+    public String getCongom2() {
+        return congom2;
+    }
+    public void setCongom2(String congom2) {
+        this.congom2 = congom2;
     }
 
     public String getDomicili() {
@@ -82,37 +97,17 @@ public class Club {
         this.correuElectronic = correuElectronic;
     }
 
-    public String getWeb() {
-        return web;
+    public String getDni() {
+        return dni;
     }
-    public void setWeb(String web) {
-        this.web = web;
-    } 
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
 
-    public List<Temporada> getTemporades() {
-        return temporades;
+    public boolean isActiu() {
+        return actiu;
     }
-    public void setTemporades(List<Temporada> temporades) {
-        this.temporades = temporades;
-    }  
-    
-    /**
-     * Mostra les dades del club
-     */
-    public void veureDadesClub() {
-        System.out.println("\nDADES DEL CLUB\n");
-        System.out.println("Nom: " + this.nom);
-        System.out.println("Domicili: " + this.domicili);
-        System.out.println("Població: (" + this.codiPostal + ") " + this.poblacio + " - " + this.provincia);
-        System.out.println("Telèfon: " + this.telefon);
-        System.out.println("Correu electrònic: " + this.correuElectronic);
-        System.out.println("Web: " + this.web + "\n");
-    }
-    /**
-     * Afegeix una nova temporada
-     * @param novaTemporada 
-     */
-    public void afegirTemporada(Temporada novaTemporada) {
-        temporades.add(novaTemporada);
-    }
+    public void setActiu(boolean actiu) {
+        this.actiu = actiu;
+    }   
 }
