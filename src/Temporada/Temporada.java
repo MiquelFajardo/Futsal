@@ -31,5 +31,9 @@ public class Temporada {
     }
     public void setTemporada(List<Categoria> temporada) {
         this.temporada = temporada;
-    }  
+    } 
+    @Override
+    public String toString() {
+        return anyTemporada;
+    }
 }

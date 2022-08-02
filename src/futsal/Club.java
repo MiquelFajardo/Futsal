@@ -87,6 +87,13 @@ public class Club {
     }
     public void setWeb(String web) {
         this.web = web;
+    } 
+
+    public List<Temporada> getTemporades() {
+        return temporades;
+    }
+    public void setTemporades(List<Temporada> temporades) {
+        this.temporades = temporades;
     }  
     
     /**
@@ -100,5 +107,12 @@ public class Club {
         System.out.println("Telèfon: " + this.telefon);
         System.out.println("Correu electrònic: " + this.correuElectronic);
         System.out.println("Web: " + this.web + "\n");
+    }
+    /**
+     * Afegeix una nova temporada
+     * @param novaTemporada 
+     */
+    public void afegirTemporada(Temporada novaTemporada) {
+        temporades.add(novaTemporada);
     }
 }
