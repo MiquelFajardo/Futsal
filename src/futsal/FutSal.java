@@ -156,8 +156,7 @@ public class FutSal {
                 case 1:         
                     seleccionarTemporada();
                     break;
-                case 0:
-                   
+                case 0:                   
                     break;
                 default:
                     System.out.println(OPCIO_NO_VALIDA);
@@ -169,14 +168,23 @@ public class FutSal {
      */
     public void seleccionarTemporada() {
         utilsES = new UtilsES();
+        
         if(club.getTemporades().isEmpty()) {
             System.out.println("\nERROR. No hi ha cap temporada introduïda al sistema.\n");
-        }  else {
-            String[] llistatTemporades = new String[club.getTemporades().size()];
-           
-           
-           
-        }      
+        }  else {                     
+            String[] llistatTemporades = new String[club.getTemporades().size() + 1];
+            llistatTemporades[0] = "Tornar al menú temporades";
+            int opcio;
+            
+            for(int i = 0; i < club.getTemporades().size(); i++) {
+                llistatTemporades[i + 1] = (club.getTemporades().get(i)).toString();                   
+            } 
+            do {
+                utilsES.mostrarMenu("Temporades", llistatTemporades);
+                opcio = utilsES.demanrEnter("Selecciona una temporada: ", SORTIR, club.getTemporades().size());
+                
+            } while(opcio != SORTIR);
+        }         
     }
     
     // Dades de prova // BORRAR

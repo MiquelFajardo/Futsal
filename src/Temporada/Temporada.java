@@ -10,12 +10,12 @@ import java.util.ArrayList;
  * @author Miquel Fajardo <miquel.fajardo@protonmail.com>
  */
 public class Temporada {    
-    private String anyTemporada;
+    private String anyTemporada; 
     private List<Categoria> temporada = new ArrayList<>();
 
     // Mètode constructor
     public Temporada(String anyTemporada) {
-        this.anyTemporada = anyTemporada;
+        this.anyTemporada = anyTemporada;       
     }
 
     // Mètodes accessors
